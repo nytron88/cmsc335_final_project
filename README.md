@@ -2,7 +2,7 @@
 
 Submitted by: Siddhant Jain (jainsid)
 
-Group Members: Siddhant Jain (jainsid)
+Group Members: Siddhant Jain (jainsid), Gautham Hari (ghari)
 
 App Description: Weather Journal lets users enter a city and a short note, then stores the note with live weather data in MongoDB.
 
