@@ -12,6 +12,6 @@ APIs: wttr.in Weather API (https://wttr.in/:help)
 
 Contact Email: jainsid@terpmail.umd.edu
 
-Deployed App Link: Add deployed Render link here
+Deployed App Link: https://cmsc335-final-project-q41j.onrender.com/
 
 AI Use: 1. Codex
