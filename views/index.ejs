@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="intro">
+        <h1>Weather Journal</h1>
+        <p>Write a note for a city and save it with the current weather.</p>
+      </section>
+
+      <section class="entry-panel">
+        <form class="entry-form" action="/entries" method="POST">
+          <label for="city">City</label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            value="<%= formData.city || '' %>"
+            placeholder="College Park"
+            required
+          >
+
+          <label for="note">Journal note</label>
+          <textarea
+            id="note"
+            name="note"
+            rows="4"
+            placeholder="Write a quick weather-related note..."
+            required
+          ><%= formData.note || '' %></textarea>
+
+          <% if (error) { %>
+            <p class="error"><%= error %></p>
+          <% } %>
+
+          <button type="submit">Save Weather Entry</button>
+        </form>
+      </section>
+
+      <section class="entries">
+        <div class="section-heading">
+          <h2>Saved Entries</h2>
+          <span><%= entries.length %> saved</span>
+        </div>
+
+        <% if (entries.length === 0) { %>
+          <p class="empty-state">No entries yet.</p>
+        <% } %>
+
+        <div class="entry-list">
+          <% entries.forEach((entry) => { %>
+            <article class="entry-card">
+              <div>
+                <h3><%= entry.city %></h3>
+                <time datetime="<%= entry.createdAt.toISOString() %>">
+                  <%= entry.createdAt.toLocaleString() %>
+                </time>
+              </div>
+              <p class="weather">
+                <strong><%= entry.temperature %>&deg;F</strong>
+                <%= entry.weatherDescription %> · Wind <%= entry.windSpeed %> mph
+              </p>
+              <p><%= entry.note %></p>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
